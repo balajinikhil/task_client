@@ -1,0 +1,122 @@
+// mixins
+@mixin  laptopL {
+    @media only screen and (max-width: 1440px) { 
+        @content
+    };
+}
+
+@mixin  laptop {
+    @media only screen and (max-width: 1026px) { 
+        @content
+    };
+}
+
+@mixin  tablet {
+    @media only screen and (max-width: 770px) { 
+        @content
+    };
+}
+
+@mixin mobileL{
+    @media only screen and (max-width: 426px) { 
+        @content
+    };
+}
+
+@mixin mobileM {
+    @media only screen and (max-width: 376px) { 
+        @content
+    };
+}
+
+@mixin  mobileS {
+    @media only screen and (max-width: 320px) { 
+        @content
+    };
+}
+
+// variables
+@font-face{
+    font-family:'RobotoBold' ;
+    src: url('./fonts/Roboto-Bold.ttf');
+}
+
+@font-face{
+    font-family: 'RobotoLight';
+    src: url('./fonts/Roboto-Light.ttf');
+}
+
+@font-face{
+    font-family: 'RobotoMedium';
+    src:url('./fonts/Roboto-Medium.ttf');
+}
+
+@font-face{
+    font-family: 'RobotoRegular';
+    src: url('./fonts/Roboto-Regular.ttf');
+}
+
+@font-face{
+    font-family: 'RobotoThin';
+    src: url('./fonts/Roboto-Thin.ttf');
+}
+
+@font-face{
+    font-family: 'GothamMedium';
+    src: url('./fonts/Gotham-Medium.otf');
+}
+
+@font-face{
+    font-family: 'GothamLight';
+    src: url('./fonts/Gotham-Light.otf');
+}
+
+@font-face{
+    font-family: 'GothamBook';
+    src: url('./fonts/Gotham-Book.otf');
+}
+
+@font-face{
+    font-family: 'GothamThin';
+    src: url('./fonts/Gotham-Thin.otf');
+}
+
+@font-face{
+    font-family: 'GothamBold';
+    src: url('./fonts/GothamBold.ttf') format("truetype");
+}
+
+$font-Bold: 'RobotoBold';
+$font-Light:'RobotoLight';
+$font-Medium: 'RobotoMedium';
+$font-Regular:'RobotoRegular';
+$font-Thin:'RobotoThin';
+$font-Gotham-Light:'GothamLight',Arial, "Helvetica Neue", Helvetica, sans-serif;
+$font-Gotham-Medium:'GothamMedium',Arial, "Helvetica Neue", Helvetica, sans-serif;
+$font-Gotham-Book:'GothamBook',Arial, "Helvetica Neue", Helvetica, sans-serif;
+$font-Gotham-Thin:'GothamThin',Arial, "Helvetica Neue", Helvetica, sans-serif;
+$font-Gotham-Bold: 'GothamBold',Arial, "Helvetica Neue", Helvetica, sans-serif;
+
+$color-white:#fff;
+$color-navbar:#026aa7;
+$color-silver: #ebecf0;
+$color-silver-dark:#5e6c84;
+
+// base
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+html{
+    font-size: 62.5%;  //1 rem = 10px; 10px/16px = 62.5%
+}
+
+body{
+    box-sizing: border-box;
+}
+
+@import './components/NavBar/navbar';
+@import './components/Board/board';
+@import './components/BoardList/boarList.scss';

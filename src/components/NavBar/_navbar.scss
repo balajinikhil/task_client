@@ -1,0 +1,101 @@
+.section-navbar{
+    height: 4rem;
+    background-color: $color-navbar;
+    color: $color-white;
+    font-family: $font-Regular;
+    padding: 2.5rem 0;
+    a{
+        text-decoration: none;
+        color: $color-white;
+    }
+    color: $color-white;
+
+    display:flex;
+    align-items:center;
+    
+    .navbar{
+        &__menu{
+            background-color: hsla(0,0%,100%,.3);
+            margin-left: 2rem;
+            margin-right: .5rem;
+            padding: 1rem;
+            .fa-bars{
+                font-size: 2rem;
+            }
+        }
+        &__home{
+            background-color: hsla(0,0%,100%,.3);
+            padding: 1rem;
+            .fa-home{
+                font-size:2rem;      
+            }
+        }
+        &__board{
+            margin-left: .5rem;
+            background-color: hsla(0,0%,100%,.3);
+            padding: 1rem 2rem;
+            border-radius: .3rem;
+            font-size: 1.5rem;
+            font-family: $font-Bold;
+            color: $color-white;
+            i{
+                margin-right: 1rem;
+            }
+        }
+        &__search{
+            margin-left: .5rem;
+            .fa-search{
+                font-size: 1.6rem;
+                transform: translateX(-150%);
+                
+            }
+
+            .fa-times{
+                font-size: 1.6rem;
+                transform: translateX(-150%);
+                color: #000;
+                display: none;
+            }
+            
+            input{
+                padding: 1rem;
+                border-radius: .5rem;
+                outline: none;
+                border: none;
+                background-color: hsla(0,0%,100%,.3);
+            }
+
+            input::placeholder{
+                color: $color-white;
+                font-family: $font-Thin;
+                font-size: 1.4rem;
+                font-weight: bold;
+            }
+
+            &--click{
+                input{
+                    background-color: #fff;
+                    width: 25rem;
+                }
+                input::placeholder{
+                    color: #000;
+                }
+            }
+        }
+        &__notification{
+            margin-left: auto;
+            background-color: #eb5a46;
+            padding: 1rem;
+            .fa-bell{
+                font-size: 2rem;
+            }
+        }
+        &__google{
+            margin-right: 7rem;
+            margin-left: 1rem;
+            .fa-google{
+                font-size: 2rem;
+            }
+        }
+    }
+}
