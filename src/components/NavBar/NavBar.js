@@ -1,11 +1,11 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import GoogleLogin from 'react-google-login';
-
+import history from '../../history';
 
 class NavBar extends React.Component{
 
-    state = { searchClassName:"navbar__search", searchPlaceHolder:'Jump to...' }
+    state = { searchClassName:"navbar__search", searchPlaceHolder:'Jump to...', signIn:true }
     
     onSearchFocous = () =>{
         document.getElementsByClassName('fa-times')[0].style = "display:inline-block"
@@ -19,8 +19,45 @@ class NavBar extends React.Component{
         this.setState({searchClassName:"navbar__search", searchPlaceHolder:'Jump to...'})
     }
 
-    responseGoogle = (val)=>{
+    responseGoogle = async(val)=>{
+        let user = val.profileObj;
+        window.localStorage.setItem('imageUrl', user.imageUrl);  
+        this.renderGoogleButton();
         this.props.userSignIn(val);
+    }
+
+    signOutClick = () => {
+        localStorage.removeItem('imageUrl');
+        localStorage.removeItem('userid');
+        history.push('/');
+        this.setState({signIn:false});
+    }
+
+    renderGoogleButton = () =>{       
+        let imageUrl = localStorage.getItem('imageUrl');
+        if(!imageUrl){
+            return(
+                <GoogleLogin className="navbar__google"
+                clientId="973663447827-q5f6bi2nhggpa2dagufgts8v4in1eb6i.apps.googleusercontent.com"
+                buttonText="Login"
+                onSuccess={this.responseGoogle}
+                onFailure={this.responseGoogle}
+                cookiePolicy={'single_host_origin'}
+            />
+            )
+        }else{
+            return(
+                <>
+                <div className="navbar__google-01">
+                    <img src={imageUrl} alt="" />
+                    <div className="navbar__dropdown" onClick={this.signOutClick} >
+                        sign out
+                    </div>
+                </div>
+                </>
+            )
+        }
+     
     }
     
     render(){
@@ -53,13 +90,8 @@ class NavBar extends React.Component{
                     <i className="fab fa-google"></i>
                 </Link> */}
 
-                <GoogleLogin className="navbar__google"
-                    clientId="973663447827-q5f6bi2nhggpa2dagufgts8v4in1eb6i.apps.googleusercontent.com"
-                    buttonText="Login"
-                    onSuccess={this.responseGoogle}
-                    onFailure={this.responseGoogle}
-                    cookiePolicy={'single_host_origin'}
-                />,
+                {this.renderGoogleButton()}
+               
                 
             </nav>
         )

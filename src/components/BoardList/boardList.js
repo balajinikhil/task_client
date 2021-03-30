@@ -11,7 +11,7 @@ class BoardList extends React.Component{
     state = {length:0, board:[]}
 
     componentDidMount = async()=>{
-        let googleId = window.localStorage.getItem('userid');
+        let googleId = localStorage.getItem('userid');
         let {data} = await axios.get(`${URL}/boards/list?googleId=${googleId}`);
         console.log(data);
         this.setState({length:data.length});
@@ -48,7 +48,7 @@ class BoardList extends React.Component{
                <div className="board__list--sidebar">
                    
                </div>
-               <div className="board__list--container">
+               <div className="board__list--container" >
                   {this.state.length === 0 ? this.renderEmpty() :  this.renderList() }
                </div>
            </section>
@@ -56,7 +56,7 @@ class BoardList extends React.Component{
     }
 
     render(){
-        console.log(this.state);
+        console.log(isAuthenticated());
 
         return isAuthenticated() ? 
             <>{this.renderBoardList()}</> :

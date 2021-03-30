@@ -93,9 +93,41 @@
         &__google{
             margin-right: 7rem;
             margin-left: 1rem;
+            position: relative;
             .fa-google{
                 font-size: 2rem;
             }
+            &:hover .navbar__dropdown{
+                display: block;
+            }
+        }
+        &__google-01{
+            margin-right: 7rem;
+            margin-left: 1rem;
+            position: relative;
+            .fa-google{
+                font-size: 2rem;
+            }
+            img{
+                height: 4rem;
+                border-radius: 50%;
+            }
+            &:hover .navbar__dropdown{
+                display: block;
+            }
+        }
+        &__dropdown{
+            display: none;
+            position: absolute;
+            top: 90%;
+            left: 7%;
+            font-size: 1.5rem;
+            color: #000;
+            width: 25rem;
+            background: #fff;
+            box-shadow: 0 .5rem .5rem rgba($color: #000, $alpha:.4);
+            padding: .5rem 1rem;
+            cursor: pointer;
         }
     }
 }

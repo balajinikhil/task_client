@@ -23,7 +23,8 @@ class App extends React.Component{
                 imageUrl:user.imageUrl
             } );
                 this.setState({isLoggedIn:true});
-                window.localStorage.setItem('userid', response.data.user.googleId);        
+                window.localStorage.setItem('userid', response.data.user.googleId);
+                      
         }catch(err){
             console.log(err);
         }
