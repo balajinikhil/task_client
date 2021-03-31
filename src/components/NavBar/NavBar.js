@@ -86,13 +86,7 @@ class NavBar extends React.Component{
                 <span className="navbar__notification">
                     <i className="fas fa-bell"></i>
                 </span>
-                {/* <Link to="/api-v1/google" className="navbar__google">
-                    <i className="fab fa-google"></i>
-                </Link> */}
-
-                {this.renderGoogleButton()}
-               
-                
+                {this.renderGoogleButton()}    
             </nav>
         )
     }

@@ -1,6 +1,7 @@
 import React from 'react';
-import isAuthenticated from '../../isAuthenticated';
 import { Link } from 'react-router-dom';
+import {toast } from 'react-toastify';
+
 import history from '../../history';
 import URL from '../../api';
 import axios from 'axios';
@@ -11,11 +12,19 @@ class BoardList extends React.Component{
     state = {length:0, board:[]}
 
     componentDidMount = async()=>{
-        let googleId = localStorage.getItem('userid');
-        let {data} = await axios.get(`${URL}/boards/list?googleId=${googleId}`);
-        console.log(data);
-        this.setState({length:data.length});
-        this.setState({board:data.boards})
+        if(this.isAuthenticated){
+            let googleId = localStorage.getItem('userid');
+            let {data} = await axios.get(`${URL}/boards/list?googleId=${googleId}`);
+            this.setState({length:data.length});
+            this.setState({board:data.boards});
+        }
+    }
+
+    componentWillUnmount() {
+        // fix Warning: Can't perform a React state update on an unmounted component
+        this.setState = (state,callback)=>{
+            return;
+        };
     }
 
     renderEmpty = () => {
@@ -55,10 +64,14 @@ class BoardList extends React.Component{
         )
     }
 
-    render(){
-        console.log(isAuthenticated());
+    isAuthenticated = () => {
+        let userId = localStorage.getItem('userid');
+        if(!userId) toast.error('Login to view boards');
+        return userId ? true : false;
+   }
 
-        return isAuthenticated() ? 
+    render(){
+        return this.isAuthenticated() ? 
             <>{this.renderBoardList()}</> :
             <>{history.push('/')}</>
     }

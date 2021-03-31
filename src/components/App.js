@@ -1,6 +1,8 @@
 import React from 'react';
 import {HashRouter, Route} from 'react-router-dom';
 import axios from 'axios';
+import { ToastContainer,toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import NavBar from './NavBar/NavBar';
 // import Board from './Board/Board';
@@ -23,7 +25,8 @@ class App extends React.Component{
                 imageUrl:user.imageUrl
             } );
                 this.setState({isLoggedIn:true});
-                window.localStorage.setItem('userid', response.data.user.googleId);
+                localStorage.setItem('userid', response.data.user.googleId);
+                toast.success('Logged in successfully');
                       
         }catch(err){
             console.log(err);
@@ -35,6 +38,17 @@ class App extends React.Component{
             <NavBar userSignIn = {this.userSignIn} />
             <Route path="/board/:id" exact render={(props)=><Board isLoggedIn={this.state.isLoggedIn} {...props} />} ></Route>
             <Route path="/board" component={BoardList} ></Route>
+            <ToastContainer
+            position="top-right"
+            autoClose={5000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            />
         </HashRouter>)
     }
 }
