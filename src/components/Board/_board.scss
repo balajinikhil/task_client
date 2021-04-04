@@ -85,3 +85,50 @@
     }
 
 }
+
+.popup__card{
+    position: fixed; 
+    width: 100%; 
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.7);
+    z-index: 2;
+
+    form{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+
+        input{
+            padding: 1rem 1.5rem;
+            font-size: 1.6rem;
+            margin: 2rem 0;
+            border-radius: .3rem;
+        }
+        input::placeholder{
+            font-size: 1.6rem;
+        }
+        i{
+            margin-top: 15rem;
+            font-size: 2.5rem;
+            margin-left: 30%;
+            border-radius: 1rem;
+            cursor: pointer;
+            
+        }
+        button{
+            padding: 1rem 1.5rem;
+            font-size: 1.6rem;
+            background: #0F9AEE;
+            border: none;
+            color: #fff;
+            box-shadow: 0 .2rem .2rem rgba($color: #000, $alpha: .4);
+            cursor: pointer;
+        }
+    }
+
+}

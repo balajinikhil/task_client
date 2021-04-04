@@ -38,7 +38,9 @@ export default class Column extends React.Component {
               {this.props.tasks.map((task, index) => (
                 <Task key={task.id} task={task} index={index} />
               ))}
-              <div>+ Add new card</div>
+              <div onClick={()=>this.props.addNewCard(this.props.column.id)} 
+              style={{cursor:'pointer'}}
+              >+ Add new card</div>
               {provided.placeholder}
             </TaskList>
           )}

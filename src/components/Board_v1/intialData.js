@@ -34,6 +34,10 @@ const initialData = {
     },
     // Facilitate reordering of the columns
     columnOrder: ['column-1', 'column-2', 'column-3','column-4','column-5'],
+    popup:'none',
+    newname:"",
+    addCard:false,
+    previd:'column-1'
   };
   
   export default initialData;

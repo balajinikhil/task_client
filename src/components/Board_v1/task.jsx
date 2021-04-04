@@ -22,11 +22,13 @@ export default class Task extends React.Component {
             isDragging={snapshot.isDragging}
           >
             <div className="board__container--todo--cards__card">
-            <p className="board__container--todo--cards__card--name">
+            <p 
+            className="board__container--todo--cards__card--name">
                 {this.props.task.content}            
             </p>
             <div className="board__container--todo--cards__card--author">
-                <img src={localStorage.getItem('imageUrl')} alt="google-img" className="board__google-img" />
+                <img src={localStorage.getItem('imageUrl')} alt="google-img"
+                 className="board__google-img" />
             </div>
             </div>
           </Container>

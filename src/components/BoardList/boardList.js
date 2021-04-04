@@ -44,9 +44,6 @@ class BoardList extends React.Component{
                     Authorization:localStorage.getItem('userid')
                 }
             });
-
-            console.log(response.data);
-
             if(response.data.message === 'Unauthorized'){
                 toast.error('Unauthorized, Login Again');
                 history.push('/');
