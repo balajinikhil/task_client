@@ -18,7 +18,11 @@ class BoardList extends React.Component{
     getBoardList = async() => {
         if(this.isAuthenticated){
             let googleId = localStorage.getItem('userid');
-            let {data} = await axios.get(`${URL}/boards/list?googleId=${googleId}`);
+            let {data} = await axios.get(`${URL}/boards/list?googleId=${googleId}`,{
+                headers:{
+                    Authorization:localStorage.getItem('userid')
+                }
+            });
             this.setState({length:data.length});
             this.setState({board:data.boards});
         }

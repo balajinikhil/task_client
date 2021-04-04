@@ -18,7 +18,11 @@ class Board extends React.Component {
   state = initialData;
 
   componentDidMount = async() => {
-    let response = await axios.get(`${URL}/board-new/${this.props.match.params.id}`);
+    let response = await axios.get(`${URL}/board-new/${this.props.match.params.id}`, {
+      headers:{
+        Authorization:localStorage.getItem('userid')
+    }
+    });
     let board = response.data.board;
     let obj = {...board.board};
     this.setState(obj);
