@@ -26,7 +26,7 @@ export default class Task extends React.Component {
                 {this.props.task.content}            
             </p>
             <div className="board__container--todo--cards__card--author">
-                <img src={this.props.task.teamImg} alt="google-img" className="board__google-img" />
+                <img src={localStorage.getItem('imageUrl')} alt="google-img" className="board__google-img" />
             </div>
             </div>
           </Container>

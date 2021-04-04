@@ -2,10 +2,11 @@ import React from 'react';
 import '@atlaskit/css-reset';
 import styled from 'styled-components';
 import { DragDropContext } from 'react-beautiful-dnd';
+import {toast} from 'react-toastify'
+
 import initialData from './intialData';
 import Column from './column';
 import history from '../../history';
-import isAuthenticated from '../../isAuthenticated';
 import axios from 'axios';
 import URL from '../../api';
 
@@ -17,13 +18,9 @@ class Board extends React.Component {
   state = initialData;
 
   componentDidMount = async() => {
-    let userId = document.cookie.split('userid=')[1];
-    let response = await axios.get(`${URL}/board?user=${userId}`);
-
+    let response = await axios.get(`${URL}/board-new/${this.props.match.params.id}`);
     let board = response.data.board;
     let obj = {...board.board};
-    console.log(obj);
-    console.log(this.state);
     this.setState(obj);
   }
 
@@ -92,6 +89,18 @@ class Board extends React.Component {
     this.setState(newState);
   };
 
+  isAuthenticated = async() => {
+    let userId = window.localStorage.getItem('userid');
+
+    if(userId){
+        return true;
+    }else{
+        toast.error('Unauthorized, Login again');
+        history.push('/');
+        return false;
+    }
+}
+
   renderBoard = () =>{
     return(
       <section className="section-board">
@@ -104,8 +113,8 @@ class Board extends React.Component {
                     </span>
 
                     <span className="board__head--team">
-                        <img src="/images/alphabet.png" alt="google-img" className="board__google-img" />
-                        <img src="/images/alphabet.png" alt="google-img" className="board__google-img" />
+                        <img src={localStorage.getItem('imageUrl')}
+                         alt="google-img" className="board__google-img" />
                     </span>
 
             </div>
@@ -128,7 +137,7 @@ class Board extends React.Component {
   }
 
   render() {
-    return isAuthenticated() ? <> {this.renderBoard()} </>: <> { history.push('/') } </>;
+    return this.isAuthenticated() ? <> {this.renderBoard()} </>: <> {history.push('/')} </>;
   }
 }
 

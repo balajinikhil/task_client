@@ -37,7 +37,7 @@ class App extends React.Component{
         return(<HashRouter>
             <NavBar userSignIn = {this.userSignIn} />
             <Route path="/board/:id" exact render={(props)=><Board isLoggedIn={this.state.isLoggedIn} {...props} />} ></Route>
-            <Route path="/board" component={BoardList} ></Route>
+            <Route path="/board" component={BoardList} exact ></Route>
             <ToastContainer
             position="top-right"
             autoClose={5000}

@@ -21,7 +21,7 @@ class NavBar extends React.Component{
 
     responseGoogle = async(val)=>{
         let user = val.profileObj;
-        window.localStorage.setItem('imageUrl', user.imageUrl);  
+        localStorage.setItem('imageUrl', user.imageUrl);  
         this.renderGoogleButton();
         this.props.userSignIn(val);
     }
@@ -34,7 +34,7 @@ class NavBar extends React.Component{
     }
 
     renderGoogleButton = () =>{       
-        let imageUrl = localStorage.getItem('imageUrl');
+        let imageUrl = localStorage.getItem('imageUrl') || false;
         if(!imageUrl){
             return(
                 <GoogleLogin className="navbar__google"
