@@ -17,9 +17,9 @@ const Container = styled.div`
 
 class Board extends React.Component {
 
-  state = initialData;
+state = initialData;
 
-  componentDidMount = async() => {
+componentDidMount = async() => {
     if(this.isAuthenticated){
       let response = await axios.get(`${URL}/board-new/${this.props.match.params.id}`, {
         headers:{
@@ -32,7 +32,7 @@ class Board extends React.Component {
     }else{
       return
     }
-  }
+}
 
   componentWillUnmount() {
     this.setState = (state,callback)=>{
