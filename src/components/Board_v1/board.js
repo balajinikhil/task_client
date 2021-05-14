@@ -28,7 +28,8 @@ componentDidMount = async() => {
       });
       let board = response.data.board;
       let obj = board ? {...board.board} : {};
-      this.setState(obj);
+      await this.setState(obj);
+      console.log(this.state);
     }else{
       return
     }
@@ -161,7 +162,6 @@ componentDidMount = async() => {
       await this.setState({previd:id});
     }
     await this.setState({popup:'block'});
-    console.log(this.state);
     if(this.state.addCard){
       let colid = this.state.previd;
       let lastTaskArr = Object.keys(this.state.tasks);
@@ -178,6 +178,17 @@ componentDidMount = async() => {
       await this.setState({popup:'none'});
       this.updateBoard();
     }
+  }
+
+  deleteCard = async(id) => {
+    console.log(this.state._id);
+    await axios.delete(`${URL}/board/delete/${id}`, {
+      headers:{
+          Authorization:localStorage.getItem('userid'),
+          board:this.props.match.params.id
+      }
+    });
+    toast.warn('Deleted Sucessfully');
   }
 
   renderBoard = () =>{
@@ -209,7 +220,7 @@ componentDidMount = async() => {
 
                         return <Column key={column.id} column={column} tasks={tasks}
                          addNewCard={this.addNewCard}
-                        
+                         deleteCard={this.deleteCard}
                          />;
                     })}
                     </Container>

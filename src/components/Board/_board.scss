@@ -69,14 +69,28 @@
                     margin-top: 3rem;
                     &__card{
                         // padding: 1rem;
-                        margin: 1rem 0;
+                        cursor: pointer;
+                        margin: 2rem 0;
                         background: $color-white;
                         font-family: $font-Regular;
+                        position: relative;
+                        &:hover .board__container--todo--cards__card--trash{
+                            display: flex;
+                        }
                         &--name{
                             font-size: 1.6rem;
                         }
                         &--author{
-                            text-align: right;
+                            display: flex;
+                            align-items: center;
+                            justify-content: space-between;
+                            margin-top: 1rem;
+                            img{
+                                margin-left: auto;
+                            }
+                        }
+                        &--trash{
+                            display: none;
                         }
                     }
                 }

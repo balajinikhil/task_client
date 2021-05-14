@@ -37,7 +37,8 @@ const initialData = {
     popup:'none',
     newname:"",
     addCard:false,
-    previd:'column-1'
+    previd:'column-1',
+    _id:''
   };
   
   export default initialData;

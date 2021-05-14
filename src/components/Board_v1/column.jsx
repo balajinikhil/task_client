@@ -36,7 +36,8 @@ export default class Column extends React.Component {
               isDraggingOver={snapshot.isDraggingOver}
             >
               {this.props.tasks.map((task, index) => (
-                <Task key={task.id} task={task} index={index} />
+                <Task key={task.id} task={task} index={index}
+                deleteCard={this.props.deleteCard} />
               ))}
               <div onClick={()=>this.props.addNewCard(this.props.column.id)} 
               style={{cursor:'pointer'}}

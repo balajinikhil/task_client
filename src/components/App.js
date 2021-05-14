@@ -5,11 +5,10 @@ import { ToastContainer,toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 import NavBar from './NavBar/NavBar';
-// import Board from './Board/Board';
 import Board from './Board_v1/board';
 import BoardList from './BoardList/boardList';
 import URL from '../api';
-// import ProtectedRoute from './ProtecetedRoutes';
+import HomePage from './Home/home';
 
 class App extends React.Component{
 
@@ -34,8 +33,10 @@ class App extends React.Component{
     }
 
     render(){
-        return(<HashRouter>
+        return(
+        <HashRouter>
             <NavBar userSignIn = {this.userSignIn} />
+            <Route path="/" exact component={HomePage} ></Route>
             <Route path="/board/:id" exact render={(props)=><Board isLoggedIn={this.state.isLoggedIn} {...props} />} ></Route>
             <Route path="/board" component={BoardList} exact ></Route>
             <ToastContainer
